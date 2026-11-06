@@ -1,5 +1,6 @@
 const { merge } = require("webpack-merge");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common.js");
 
 const devConfig = {
@@ -15,6 +16,13 @@ const devConfig = {
     // this is for generating the index.html file in the dist folder, and it will automatically inject the script tag for the bundle.js file
     new htmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    // this is for module federation, it will expose the MarketingApp component to other applications
+    new ModuleFederationPlugin({
+      name: "container",
+      remotes: {
+        marketing: "marketing@http://localhost:8081/remoteEntry.js",
+      },
     }),
   ],
 };
