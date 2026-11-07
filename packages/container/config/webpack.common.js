@@ -1,5 +1,12 @@
+const htmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   entry: "./src/index.js",
+  plugins: [
+    new htmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
   module: {
     rules: [
       {
