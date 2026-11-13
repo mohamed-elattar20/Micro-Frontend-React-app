@@ -7,7 +7,7 @@ export default () => {
   const history = useHistory();
 
   useEffect(() => {
-    const { onParentNavigate } = mount(ref.current, {
+    const result = mount(ref.current, {
       onNavigate: ({ pathname: nextPathname }) => {
         const { pathname } = history.location; // we are getting the current pathname from the window.location object, which is the current URL of the browser
 
@@ -26,7 +26,7 @@ export default () => {
       return;
     }
 
-    history.listen(onParentNavigate);
+    history.listen(result?.onParentNavigate);
   }, []);
 
   return <div ref={ref} />; // we are passing the ref of the div where we want to mount the marketing app
