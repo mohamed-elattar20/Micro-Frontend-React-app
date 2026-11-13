@@ -18,6 +18,10 @@ export default () => {
       },
     });
 
+    if (!onParentNavigate) {
+      onParentNavigate = () => {};
+    }
+
     history.listen(onParentNavigate);
   }, []);
 
