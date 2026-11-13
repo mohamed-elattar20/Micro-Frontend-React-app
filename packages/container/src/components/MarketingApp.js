@@ -17,9 +17,13 @@ export default () => {
         }
       },
     });
+    console.log("Marketing mount result:", result);
+    console.log("Is result undefined?", result === undefined);
+    console.log("onParentNavigate:", result?.onParentNavigate);
 
-    if (!onParentNavigate) {
-      onParentNavigate = () => {};
+    if (!result) {
+      console.error("Marketing mount returned undefined");
+      return;
     }
 
     history.listen(onParentNavigate);
