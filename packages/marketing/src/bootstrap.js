@@ -20,28 +20,21 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 // };
 
 const mount = (el, { onNavigate, defaultHistory }) => {
-  console.log("🔥 NEW MARKETING BOOTSTRAP LOADED");
-
-  const history = defaultHistory || createMemoryHistory();
+  const history =
+    defaultHistory?.createBrowserHistory() || createMemoryHistory();
 
   if (onNavigate) {
     history.listen(onNavigate);
   }
-
   ReactDOM.render(<App history={history} />, el);
-
   const result = {
     onParentNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location;
-
       if (pathname !== nextPathname) {
         history.push(nextPathname);
       }
     },
   };
-
-  console.log("🔥 MOUNT RETURNING:", result);
-
   return result;
 };
 
