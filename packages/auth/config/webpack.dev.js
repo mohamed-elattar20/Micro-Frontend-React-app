@@ -7,6 +7,10 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   devtool: "inline-source-map",
+  output: {
+    // filename: "[name].[contenthash].js",
+    publicPath: "http://localhost:8082/",
+  },
   devServer: {
     port: 8082,
     historyApiFallback: {

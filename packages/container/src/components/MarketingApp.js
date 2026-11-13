@@ -8,6 +8,7 @@ export default () => {
 
   useEffect(() => {
     const result = mount(ref.current, {
+      initialPath: history.location.pathname,
       onNavigate: ({ pathname: nextPathname }) => {
         const { pathname } = history.location; // we are getting the current pathname from the window.location object, which is the current URL of the browser
 
