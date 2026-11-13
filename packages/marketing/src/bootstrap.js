@@ -20,8 +20,7 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 // };
 
 const mount = (el, { onNavigate, defaultHistory }) => {
-  const history =
-    defaultHistory?.createBrowserHistory() || createMemoryHistory();
+  const history = defaultHistory || createMemoryHistory();
 
   if (onNavigate) {
     history.listen(onNavigate);
