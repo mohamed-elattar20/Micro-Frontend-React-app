@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { mount } from "auth/AuthApp"; // auth is the (prop) name of the remote app that we defined in the ModuleFederationPlugin in the container's webpack config file
 
-export default () => {
+export default ({ onSignIn }) => {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -17,6 +17,7 @@ export default () => {
           history.push(nextPathname);
         }
       },
+      onSignIn,
     });
     // console.log("Marketing mount result:", result);
     // console.log("Is result undefined?", result === undefined);
